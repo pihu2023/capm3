@@ -1,5 +1,7 @@
 namespace anirban.db;
-using { cuid, temporal } from '@sap/cds/common';
+using { cuid } from '@sap/cds/common';
+using { anirban.common } from './common';
+
 
 type Guid: String(32);
 
@@ -50,7 +52,8 @@ context transaction {
     NET_AMOUNT: Decimal(15,2);	
     TAX_AMOUNT: Decimal(15,2);	
     OVERALL_STATUS: String(2);
-    //  Items: Association to many transaction.salesorderitem on Items.PARENT_KEY = $self;
+    NOTE: String(20);
+    to_Items: Association to many transaction.salesorderitem { };
    }
 
 
@@ -65,8 +68,16 @@ entity salesorderitem {
     TAX_AMOUNT: Decimal(15,2);
  
 }
-    entity employee : cuid, temporal {
-        
+    entity employee : cuid {
+        nameFirst: String(40);
+        nameLast: String(40);
+        sex: common.Gender;
+        language:String(1);
+        phonenumber: common.Phonenumber;
+        email:common.Email;
+        currency: String(4) ;
+        salaryAmount: Decimal(10,2);
+
     }
 }
 

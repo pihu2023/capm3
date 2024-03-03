@@ -1,0 +1,105 @@
+
+###Read catalogService call
+GET http://localhost:4004/CatalogService/$metadata
+
+###Read top 1 entry from employeeset
+GET http://localhost:4004/CatalogService/employeeSet?$top=1
+
+###Get count of businesspartnerset entity
+GET http://localhost:4004/CatalogService/businesspartnerSet/$count
+
+###Get Businesspartner entityset top 5 records
+GET http://localhost:4004/CatalogService/businesspartnerSet?$top=5
+
+###Create new entry in businesspartner
+POST http://localhost:4004/CatalogService/businesspartnerSet
+Content-Type: application/json
+
+{
+      "NODE_KEY": "00505697BB3F1EEE87F8A09F11EA77D7",
+      "BP_ROLE": 1,
+      "EMAIL_ADDRESS": "anirban.abap05@gmail.com",
+      "PHONE_NUMBER": 622734567,
+      "FAX_NUMBER": 622734004,
+      "ADDRESS_GUID": "00505697BB3F1EEE87F8A09F11C7F7C7",
+      "BP_ID": "100000000",
+      "COMPANY_NAME": "HCL"
+}
+
+###Read single entry from businesspartner
+GET http://localhost:4004/CatalogService/businesspartnerSet/00505697BB3F1EEE87F8A09F11EA77D7
+
+### Read product entityset 
+GET http://localhost:4004/CatalogService/productSet
+
+### Create Employee set
+POST http://localhost:4004/CatalogService/employeeSet
+Content-Type: application/json
+
+{
+
+      "nameFirst": "Pihu",
+      "nameLast": "Majumder",
+      "sex": "F",
+      "language": "E",
+      "phonenumber": "9436480372",
+      "email": "pihu@gmail.com",
+      "currency": "INR",
+      "salaryAmount": 60000
+
+}
+
+### Update entry in EMployeeset
+PUT http://localhost:4004/CatalogService/employeeSet/eef05ef3-2f3f-43a2-9064-12617a8124ff
+Content-Type: application/json
+
+{
+  "nameFirst": "Ruma",
+  "nameLast": "Bhaumik",
+  "sex": "F",
+  "language": "E",
+  "phonenumber": "9436480372",
+  "email": "ruma.bhaumik@gmail.com"
+
+}
+
+### Read all entries of Employeeset
+GET http://localhost:4004/CatalogService/employeeSet
+
+### Patch call
+PATCH http://localhost:4004/CatalogService/employeeSet/00505697BB3F1EEE87F8A09F11EAD7C7
+Content-Type: application/json
+
+{
+  "currency": "USD",
+  "salaryAmount": "150000.00"
+}
+
+### Read single entity of Product set
+GET http://localhost:4004/CatalogService/productSet/00505697BB3F1EEE87F8A0A3F516F7C7
+
+### PATCH Call to Product Set
+PATCH http://localhost:4004/CatalogService/productSet/00505697BB3F1EEE87F8A0A3F516F7C7
+Content-Type: application/json
+
+{
+      "CURRENCY_CODE": "EUR",
+      "PRICE": 120000
+}
+
+### get single entry
+GET http://localhost:4004/CatalogService/employeeSet/00505697BB3F1EEE87F8A09F11EAD7C7
+
+### Get entityset of SO
+GET http://localhost:4004/CatalogService/salesorderheaderSet/00505697BB3F1EEE87F8A1DA8079D7C7
+
+### Post Boost call
+POST http://localhost:4004/CatalogService/salesorderheaderSet('00505697BB3F1EEE87F8A1DA8079D7C7')/CatalogService.boost
+Content-Type: application/json
+
+{}
+
+### Read largest order
+
+GET http://localhost:4004/CatalogService/salesorderheaderSet('00505697BB3F1EEE87F8A1DA8079D7C7')/CatalogService.largestOrder()
+
